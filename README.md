@@ -1,2 +1,2 @@
 # rakietka
-<h1>Kernel configuration for z390 intel - very fast</h1>
+<h1>Kernel configuration for Z390 intel - very fast</h1>
