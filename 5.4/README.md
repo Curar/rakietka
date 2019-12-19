@@ -1,1 +1,1 @@
-<h1>Kernel stable version - racket (only drivers closed from www.nvidia.com)</h1>
+<h1>Kernel stable version - rocket (only drivers closed from www.nvidia.com). Nouveau disabled</h1>
