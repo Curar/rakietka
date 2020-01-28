@@ -1,1 +1,1 @@
-Kernel 5.6
+Test version of the kernel - contains only Nouveau
