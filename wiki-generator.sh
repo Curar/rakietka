@@ -8,9 +8,12 @@ read KERNEL
 echo "Wpisz wersję sygnatury np.: linux-5.5.tar.sign"
 read SYGNATURA
 
+echo "Wpisz nazwę pliku np.: wiki.txt"
+read PLIK
+
 CODE="'"
 
-cat << EOF >> wiki.txt
+cat << EOF >> ${PLIK}
 
 # Arch Linux - building the kernel using the classical method :
 ### Required Packages :
