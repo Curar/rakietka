@@ -2,10 +2,13 @@
 # BY WOJTEK 2020
 # Automatyczne generowanie WIKI dla Github'a
 
-KERNEL="-5.5"
-SYGNATURA="linux-5.5.tar.sign"
-CODE="'"
+echo "Wpisz wersję kernela np.: -5.5"
+read KERNEL
 
+echo "Wpisz wersję sygnatury np.: linux-5.5.tar.sign"
+read SYGNATURA
+
+CODE="'"
 
 cat << EOF >> wiki.txt
 
