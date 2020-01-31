@@ -21,7 +21,7 @@ ${CODE}usermod -G wheel USERNAME${CODE}
  ${CODE}gpg --locate-keys torvalds@kernel.org gregkh@kernel.org${CODE}
 ### 3. Verification of kernel sources :
 ### Download source and signature :
- ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.xz${CODE}
+ ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux${KERNEL}.tar.xz${CODE}
 
  ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/${SYGNATURA}${CODE}
 ### Verify signature :
