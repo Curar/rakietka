@@ -6,9 +6,6 @@
 echo "Wpisz wersję kernela np.: -5.5"
 read KERNEL
 
-echo "Wpisz wersję sygnatury np.: linux-5.5.tar.sign"
-read SYGNATURA
-
 echo "Wpisz nazwę pliku np.: wiki.txt"
 read PLIK
 
@@ -30,7 +27,7 @@ ${CODE}usermod -G wheel USERNAME${CODE}
 ### Download source and signature :
  ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux${KERNEL}.tar.xz${CODE}
 
- ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/${SYGNATURA}${CODE}
+ ${CODE}wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux${KERNEL}.tar.sign${CODE}
 ### Verify signature :
  ${CODE}unxz -c linux${KERNEL}.tar.xz | gpg --verify linux${KERNEL}.tar.sign -${CODE}
 ### 4. Unpacking :
