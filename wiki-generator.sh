@@ -12,7 +12,7 @@ read SYGNATURA
 echo "Wpisz nazwę pliku np.: wiki.txt"
 read PLIK
 
-CODE=""
+CODE=('`')
 
 cat << EOF >> ${PLIK}
 
