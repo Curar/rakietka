@@ -2,6 +2,7 @@
 # BY WOJTEK 2020
 # Automatyczne generowanie WIKI dla Github'a
 
+
 echo "Wpisz wersję kernela np.: -5.5"
 read KERNEL
 
@@ -11,7 +12,7 @@ read SYGNATURA
 echo "Wpisz nazwę pliku np.: wiki.txt"
 read PLIK
 
-CODE="'"
+CODE=""
 
 cat << EOF >> ${PLIK}
 
