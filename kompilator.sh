@@ -2,13 +2,15 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
-  
-
 echo "Podaj nową wersję kernela np.: 5.5.1"
 read KERNEL
 
 echo "Podaj starą wersję kernela np. 5.5"
 read SKERNEL
+
+SKERNEL_EXIST="linux-${SKERNEL}/.config"
+KERNEL_EXIST="linux-${KERNEL}.tar.xz"
+KERNEL_SIGN="linux-${KERNEL}.tar.sign"
 
 function download {
 
@@ -20,6 +22,7 @@ function download {
 function kompilacja {
 
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -	
+	pause
 	tar xavf linux-${KERNEL}.tar.xz
 	cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
 	cd linux-${KERNEL}
@@ -40,10 +43,6 @@ do
   esac
 break
 done
-
-SKERNEL_EXIST="linux-${SKERNEL}/.config"
-KERNEL_EXIST="linux-${KERNEL}.tar.xz"
-KERNEL_SIGN="linux-${KERNEL}.tar.sign"
 
 if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ] && [ -e $KERNEL_SIGN ]
 	then
