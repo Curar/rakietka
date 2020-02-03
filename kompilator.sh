@@ -17,7 +17,7 @@ if [ -e $KERNEL_EXIST ]
 	pause
 	tar xavf linux-${KERNEL}.tar.xz
 	
-	elif[ -e linux-${SKERNEL}/.config]
+	elif [ -e linux-${SKERNEL}/.config]
 	
 
 		cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
