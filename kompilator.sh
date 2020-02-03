@@ -8,24 +8,30 @@ read KERNEL
 echo "Podaj starą wersję kernela np. 5.5"
 read SKERNEL
 
-if [ -e linux-${SKERNEL}/.config ]
-then
+KERNEL_EXIST="linux-${SKERNEL}/.config"
+
+if [ -e $KERNEL_EXIST ]
+	then
+	
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
-
+	pause
 	tar xavf linux-${KERNEL}.tar.xz
+	
+	elif[ -e linux-${SKERNEL}/.config]
+	
 
-	cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
+		cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
 
-	cd linux-${KERNEL}
+		cd linux-${KERNEL}
 
-	make menuconfig
+		make menuconfig
 
-	make -j 16
+		make -j 16
 
-	sudo make modules_install
+		sudo make modules_install
 
-	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
-else
-	echo "Brak pliku .config"
+		sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
+	else
+		echo "Brak plików"
 fi
 
