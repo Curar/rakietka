@@ -11,7 +11,7 @@ read SKERNEL
 SKERNEL_EXIST="linux-${SKERNEL}/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 
-if [ -e $SKERNEL_EXIST ] && [ $KERNEL_EXIST ]
+if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ]
 	then
 	
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -	
