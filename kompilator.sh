@@ -2,18 +2,23 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
+  
+
 echo "Podaj nową wersję kernela np.: 5.5.1"
 read KERNEL
 
 echo "Podaj starą wersję kernela np. 5.5"
 read SKERNEL
 
-SKERNEL_EXIST="linux-${SKERNEL}/.config"
-KERNEL_EXIST="linux-${KERNEL}.tar.xz"
+function download {
 
-if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ]
-	then
-	
+	wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.xz
+	wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.sign	
+   
+}
+
+function kompilacja {
+
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -	
 	tar xavf linux-${KERNEL}.tar.xz
 	cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
@@ -22,6 +27,30 @@ if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ]
 	make -j 16
 	sudo make modules_install
 	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
+
+}
+
+echo "Ściągnąć pliki z kernel.org ? :"
+select SCIAGAJ in kernel.org WYJŚCIE
+do
+  case "$SCIAGAJ" in
+    "kernel.org") download;;
+    "WYJŚCIE") exit ;;
+    *) echo "Brak wyboru"
+  esac
+break
+done
+
+SKERNEL_EXIST="linux-${SKERNEL}/.config"
+KERNEL_EXIST="linux-${KERNEL}.tar.xz"
+KERNEL_SIGN="linux-${KERNEL}.tar.sign"
+
+if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ] && [ -e $KERNEL_SIGN ]
+	then
+
+	echo "Weryfikowanie podpisu"
+	kompilacja
+	echo "Zakończyłem kompilację"
 
 	else
 	echo "Brak plików"
