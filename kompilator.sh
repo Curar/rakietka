@@ -21,8 +21,7 @@ function download {
 
 function kompilacja {
 
-	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -	
-	pause
+	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	tar xavf linux-${KERNEL}.tar.xz
 	cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
 	cd linux-${KERNEL}
