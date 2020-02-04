@@ -23,7 +23,12 @@ function kompilacja {
 
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	tar xavf linux-${KERNEL}.tar.xz
-	cp linux-${SKERNEL}/.config linux-${KERNEL}/.config
+	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
+        if [ ! -e "$SKERNEL_EXIST" ]
+	then
+	cd linux-${KERNEL}
+	make localmodconfig
+	fi
 	cd linux-${KERNEL}
 	make menuconfig
 	make -j 16
@@ -43,7 +48,7 @@ do
 break
 done
 
-if [ -e $SKERNEL_EXIST ] && [ -e $KERNEL_EXIST ] && [ -e $KERNEL_SIGN ]
+if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 	then
 
 	echo "Weryfikowanie podpisu"
