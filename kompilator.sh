@@ -9,7 +9,7 @@ echo ""
 echo "Podaj nową wersję kernela np.: 5.5.1"
 read KERNEL
 
-echo "Podaj ile masz rdzeni procesora masz np.: 8"
+echo "Podaj ile masz wątków procesora np.: 16"
 read RDZENIE
 
 echo "Podaj starą wersję kernela np. 5.5"
@@ -18,7 +18,6 @@ read SKERNEL
 SKERNEL_EXIST="linux-${SKERNEL}/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
-WRDZENIE=(2 x ${RDZENIE})
 
 function download {
 
@@ -29,6 +28,7 @@ function download {
 
 function kompilacja {
 
+	echo "Masz $RDZENIE wątków procesora !!!"
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	tar xavf linux-${KERNEL}.tar.xz
 	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
@@ -40,7 +40,7 @@ function kompilacja {
 	fi
 	cd linux-${KERNEL}
 	make menuconfig
-	make -j ${WRDZENIE}
+	make -j ${RDZENIE}
 	sudo make modules_install
 	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
 
