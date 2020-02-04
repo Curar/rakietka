@@ -5,12 +5,16 @@
 echo "Podaj nową wersję kernela np.: 5.5.1"
 read KERNEL
 
+echo "Podaj ile masz rdzeni procesora masz np.: 8"
+read RDZENIE
+
 echo "Podaj starą wersję kernela np. 5.5"
 read SKERNEL
 
 SKERNEL_EXIST="linux-${SKERNEL}/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
+WRDZENIE=(2 x ${RDZENIE})
 
 function download {
 
@@ -28,10 +32,11 @@ function kompilacja {
 	then
 	cd linux-${KERNEL}
 	make localmodconfig
+	cd ..
 	fi
 	cd linux-${KERNEL}
 	make menuconfig
-	make -j 16
+	make -j ${WRDZENIE}
 	sudo make modules_install
 	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
 
