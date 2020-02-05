@@ -26,6 +26,23 @@ function download {
    
 }
 
+function archlinux {
+
+	cat << EOF > linux-${KERNEL}.preset
+
+	ALL_config="/etc/mkinitcpio.conf"
+	ALL_kver="/boot/vmlinuz-linux-${KERNEL}"
+	PRESETS=('default' 'fallback')
+	default_image="/boot/initramfs-linux-${KERNEL}.img"
+	fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"
+	fallback_options="-S autodetect"
+	
+EOF
+	sudo cp linux-${KERNEL}.preset /etc/mkinitcpio.d/linux-${KERNEL}.preset	
+	sudo mkinitcpio -p linux-${KERNEL}
+	sudo grub-mkconfig -o /boot/grub/grub.cfg
+}
+
 function kompilacja {
 
 	echo "Masz $RDZENIE wątków procesora !!!"
@@ -62,6 +79,15 @@ if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 
 	echo "Weryfikowanie podpisu"
 	kompilacja
+	select ARCH in ArchLinux WYJŚCIE
+	do
+	  case "$ARCH" in
+	  "ArchLinux") archlinux;;
+	  "WYJŚCIE") exit;;
+	  *) echo "Brak wyboru"
+	esac
+	break
+	done
 	echo "Zakończyłem kompilację"
 
 	else
