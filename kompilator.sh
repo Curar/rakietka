@@ -52,6 +52,7 @@ function kompilacja {
     		echo "Podpis poprawny"
 		else
     		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
+		exit
 	fi	
 	tar xavf linux-${KERNEL}.tar.xz
 	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
