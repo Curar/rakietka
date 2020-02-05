@@ -50,17 +50,17 @@ ${CODE}usermod -G wheel USERNAME${CODE}
  ${CODE}sudo vim /etc/mkinitcpio.d/linux-${KERNEL}.preset${CODE}
 ***
 
- ${CODE}ALL_config="/etc/mkinitcpio.conf${CODE}
+ ${CODE}ALL_config="/etc/mkinitcpio.conf"${CODE}
 
- ${CODE}ALL_kver="/boot/vmlinuz-linux-${KERNEL}${CODE}
+ ${CODE}ALL_kver="/boot/vmlinuz-linux-${KERNEL}"${CODE}
 
  ${CODE}PRESETS=('default' 'fallback')${CODE}
 
- ${CODE}default_image="/boot/initramfs-linux-${KERNEL}.img${CODE}
+ ${CODE}default_image="/boot/initramfs-linux-${KERNEL}.img"${CODE}
 
- ${CODE}fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img${CODE}
+ ${CODE}fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"${CODE}
 
- ${CODE}fallback_options="-S autodetect${CODE}
+ ${CODE}fallback_options="-S autodetect"${CODE}
 
 **We issue the command :**
 
