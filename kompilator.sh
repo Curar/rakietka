@@ -47,6 +47,12 @@ function kompilacja {
 
 	echo "Masz $RDZENIE wątków procesora !!!"
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
+	if [ $? -eq 0 ]
+	then
+    		echo "Podpis poprawny"
+		else
+    		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
+	fi	
 	tar xavf linux-${KERNEL}.tar.xz
 	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
         if [ ! -e "$SKERNEL_EXIST" ]
