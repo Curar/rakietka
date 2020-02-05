@@ -79,6 +79,7 @@ if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 
 	echo "Weryfikowanie podpisu"
 	kompilacja
+	echo "Czy masz Arch Linux ?"
 	select ARCH in ArchLinux WYJŚCIE
 	do
 	  case "$ARCH" in
