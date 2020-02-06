@@ -2,9 +2,9 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
-echo "============================================================="
-echo "= UWAGA !!! Skrypt kompiluje kernele z gałęzi 5.x tylko !!! ="
-echo "============================================================="
+echo -e "\e[31m=============================================================\e[0m"
+echo -e "\e[31m= UWAGA !!! Skrypt kompiluje kernele z gałęzi 5.x tylko !!! =\e[0m"
+echo -e "\e[31m=============================================================\e[0m"
 echo ""
 echo "Podaj nową wersję kernela np.: 5.5.1"
 read KERNEL
