@@ -10,6 +10,7 @@ echo "Wpisz nazwę pliku np.: wiki.txt"
 read PLIK
 
 CODE=('`')
+CODE2=('```')
 
 cat << EOF >> ${PLIK}
 
@@ -50,17 +51,19 @@ ${CODE}usermod -G wheel USERNAME${CODE}
  ${CODE}sudo vim /etc/mkinitcpio.d/linux-${KERNEL}.preset${CODE}
 ***
 
- ${CODE}ALL_config="/etc/mkinitcpio.conf"${CODE}
+ ${CODE2}
+ ALL_config="/etc/mkinitcpio.conf"
 
- ${CODE}ALL_kver="/boot/vmlinuz-linux-${KERNEL}"${CODE}
+ ALL_kver="/boot/vmlinuz-linux-${KERNEL}"
 
- ${CODE}PRESETS=('default' 'fallback')${CODE}
+ PRESETS=('default' 'fallback')
 
- ${CODE}default_image="/boot/initramfs-linux-${KERNEL}.img"${CODE}
+ default_image="/boot/initramfs-linux-${KERNEL}.img"
 
- ${CODE}fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"${CODE}
+ fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"
 
- ${CODE}fallback_options="-S autodetect"${CODE}
+ fallback_options="-S autodetect"
+ ${CODE2}
 
 **We issue the command :**
 

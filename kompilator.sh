@@ -101,4 +101,3 @@ if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 	else
 	echo "Brak plików"
 fi
-
