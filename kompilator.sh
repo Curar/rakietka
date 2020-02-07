@@ -2,6 +2,7 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
+
 echo -e "\e[31m=============================================================\e[0m"
 echo -e "\e[31m= UWAGA !!! Skrypt kompiluje kernele z gałęzi 5.x tylko !!! =\e[0m"
 echo -e "\e[31m=============================================================\e[0m"
