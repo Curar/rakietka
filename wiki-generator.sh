@@ -12,7 +12,7 @@ read PLIK
 CODE=('`')
 CODE2=('```')
 
-cat << EOF >> ${PLIK}
+cat << EOF > ${PLIK}
 
 # Arch Linux - building the kernel using the classical method :
 ### Required Packages :
