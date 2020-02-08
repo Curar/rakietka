@@ -21,10 +21,13 @@ KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
 
 function download {
-
+        if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
+	then
 	wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.xz
 	wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.sign	
-   
+   	else
+	echo "Kernel jest już pobrany"
+	fi
 }
 
 function archlinux {
