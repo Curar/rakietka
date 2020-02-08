@@ -32,9 +32,9 @@ function sprawdzanie {
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	if [ $? -eq 0 ]
 	then
-    		echo -e "\e[31m====================\e[0m"
-		echo -e "\e[31m== Podpis poprawny =\e[0m"
-		echo -e "\e[31m====================\e[0m"
+    		echo -e "\e[32m=====================\e[0m"
+		echo -e "\e[32m=  Podpis poprawny  =\e[0m"
+		echo -e "\e[32m=====================\e[0m"
 		else
     		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
 		exit

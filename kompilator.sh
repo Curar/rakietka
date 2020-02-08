@@ -32,16 +32,17 @@ function download {
 
 function archlinux {
 
-	cat << EOF > linux-${KERNEL}.preset
+cat << EOF > linux-${KERNEL}.preset
 
-	ALL_config="/etc/mkinitcpio.conf"
-	ALL_kver="/boot/vmlinuz-linux-${KERNEL}"
-	PRESETS=('default' 'fallback')
-	default_image="/boot/initramfs-linux-${KERNEL}.img"
-	fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"
-	fallback_options="-S autodetect"
+ALL_config="/etc/mkinitcpio.conf"
+ALL_kver="/boot/vmlinuz-linux-${KERNEL}"
+PRESETS=('default' 'fallback')
+default_image="/boot/initramfs-linux-${KERNEL}.img"
+fallback_image="/boot/initramfs-linux-${KERNEL}-fallback.img"
+fallback_options="-S autodetect"
 	
 EOF
+
 	sudo cp linux-${KERNEL}.preset /etc/mkinitcpio.d/linux-${KERNEL}.preset	
 	sudo mkinitcpio -p linux-${KERNEL}
 	sudo grub-mkconfig -o /boot/grub/grub.cfg
