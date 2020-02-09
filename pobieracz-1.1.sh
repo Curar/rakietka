@@ -22,7 +22,6 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v${GKERNEL}.x/linux-${KER
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
 	then
-	
 	wget "$ADRES_KERNELA" 2>&1 | \
 	stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
 	dialog --gauge "Pobieram : ${KERNEL_EXIST}" 10 100
@@ -30,9 +29,11 @@ function download {
 	wget "$ADRES_PODPISU" 2>&1 | \
 	stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
 	dialog --gauge "Pobieram : ${KERNEL_SIGN}" 10 100
-	clear
-   	else
-		echo "Kernel jest już pobrany"
+	clear		
+	else
+		echo -e "\e[32m===========================\e[0m"
+		echo -e "\e[32m= Kernel jest już pobrany =\e[0m"
+		echo -e "\e[32m===========================\e[0m"
 	fi
 }
 
