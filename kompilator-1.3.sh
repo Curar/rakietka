@@ -19,6 +19,7 @@ read SKERNEL
 SKERNEL_EXIST="linux-${SKERNEL}/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
+KERNEL_D="linux-${KERNEL}"
 ADRES_KERNELA="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.xz"
 ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.sign"
 
@@ -64,12 +65,14 @@ function kompilacja {
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	if [ $? -eq 0 ]
 	then
-    		echo "Podpis poprawny"
+		echo -e "\e[32m=====================\e[0m"
+		echo -e "\e[32m=  Podpis poprawny  =\e[0m"
+		echo -e "\e[32m=====================\e[0m"	
 		else
     		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
 		exit
 	fi	
-	tar xavf linux-${KERNEL}.tar.xz
+	[ ! -d $KERNEL_D ] && { tar xavf linux-${KERNEL}.tar.xz; }
 	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
         if [ ! -e "$SKERNEL_EXIST" ]
 	then
@@ -79,6 +82,7 @@ function kompilacja {
 	fi
 	cd linux-${KERNEL}
 	make menuconfig
+	make clean
 	make -j ${RDZENIE}
 	sudo make modules_install
 	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
