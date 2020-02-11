@@ -26,8 +26,8 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
 	then
-	curl -o "$KERNEL_EXIST" "$ADRES_KERNELA" 2>&1 | dialog --progressbox 10 100 --gauge "Pobieram : ${KERNEL_EXIST}" 10 100
-	curl -o "$KERNEL_SIGN" "$ADRES_PODPISU" 2>&1 | dialog --progressbox 10 100 --gauge "Pobieram: ${KERNEL_SIGN}" 10 100
+	curl -o "$KERNEL_EXIST" "$ADRES_KERNELA" 2>&1 | dialog --progressbox 10 100
+	curl -o "$KERNEL_SIGN" "$ADRES_PODPISU" 2>&1 | dialog --progressbox 10 100
 	clear	
 	else
 	echo -e "\e[32m===========================\e[0m"
