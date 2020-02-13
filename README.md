@@ -35,7 +35,6 @@
  `sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-5.5.3.preset`
 ### 11. Edit files linux-5.5.3.preset
  `sudo vim /etc/mkinitcpio.d/linux-5.5.3.preset`
-***
 
  ```
  ALL_config="/etc/mkinitcpio.conf"
