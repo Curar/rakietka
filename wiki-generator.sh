@@ -14,7 +14,8 @@ CODE2=('```')
 
 cat << EOF > ${PLIK}
 
-# Arch Linux - building the kernel using the classical method :
+# Linux kernel configuration and automatic kernel compilation and download scripts
+## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
 ${CODE}sudo pacman -S base-devel bc inetutils${CODE}
 ### optionally you can add :
@@ -49,7 +50,6 @@ ${CODE}usermod -G wheel USERNAME${CODE}
  ${CODE}sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-${KERNEL}.preset${CODE}
 ### 11. Edit files linux-${KERNEL}.preset
  ${CODE}sudo vim /etc/mkinitcpio.d/linux-${KERNEL}.preset${CODE}
-***
 
  ${CODE2}
  ALL_config="/etc/mkinitcpio.conf"
