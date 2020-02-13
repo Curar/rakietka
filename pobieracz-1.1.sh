@@ -22,8 +22,8 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v${GKERNEL}.x/linux-${KER
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
 	then	
-		curl --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
-		curl --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
+		curl --compressed --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
+		curl --compressed --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
 		clear
 	else
 		echo -e "\e[32m===========================\e[0m"
@@ -33,6 +33,8 @@ function download {
 }
 
 function sprawdzanie {
+	echo "Pobiernaie kluczy GPG"
+	gpg --locate-keys torvalds@kernel.org gregkh@kernel.org
 	echo "Sprawdzam podpis !!!"
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	if [ $? -eq 0 ]
