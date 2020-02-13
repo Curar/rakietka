@@ -21,15 +21,10 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v${GKERNEL}.x/linux-${KER
 
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
-	then
-	wget "$ADRES_KERNELA" 2>&1 | \
-	stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
-	dialog --gauge "Pobieram : ${KERNEL_EXIST}" 10 100
-
-	wget "$ADRES_PODPISU" 2>&1 | \
-	stdbuf -o0 awk '/[.] +[0-9][0-9]?[0-9]?%/ { print substr($0,63,3) }' | \
-	dialog --gauge "Pobieram : ${KERNEL_SIGN}" 10 100
-	clear		
+	then	
+		curl --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
+		curl --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
+		clear
 	else
 		echo -e "\e[32m===========================\e[0m"
 		echo -e "\e[32m= Kernel jest już pobrany =\e[0m"
@@ -42,10 +37,13 @@ function sprawdzanie {
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	if [ $? -eq 0 ]
 	then
-    		echo -e "\e[32m=====================\e[0m"
-		echo -e "\e[32m=  Podpis poprawny  =\e[0m"
-		echo -e "\e[32m=====================\e[0m"
-		else
+    		clear
+		echo -e "\e[32m=========================\e[0m"
+		echo -e "\e[32m=     Podpis poprawny   =\e[0m"
+		echo -e "\e[32m=========================\e[0m"
+		echo -e "\e[32m= POBIERANIE ZAKOŃCZONE =\e[0m"
+		echo -e "\e[32m=========================\e[0m"	
+	else
     		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
 		exit
 	fi	
