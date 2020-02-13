@@ -26,8 +26,8 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
 	then
-	curl --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
-	curl --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
+	curl --compressed --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
+	curl --compressed --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
 	clear	
 	else
 	echo -e "\e[32m===========================\e[0m"
@@ -37,7 +37,6 @@ function download {
 }
 
 function archlinux {
-
 cat << EOF > linux-${KERNEL}.preset
 
 ALL_config="/etc/mkinitcpio.conf"
@@ -57,6 +56,8 @@ EOF
 function kompilacja {
 
 	echo "Masz $RDZENIE wątków procesora !!!"
+	echo "Pobierma klucze GPG"
+	gpg --locate-keys torvalds@kernel.org gregkh@kernel.org
 	unxz -c linux-${KERNEL}.tar.xz | gpg --verify linux-${KERNEL}.tar.sign -
 	if [ $? -eq 0 ]
 	then
