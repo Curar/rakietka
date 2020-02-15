@@ -6,8 +6,7 @@
 echo "Wpisz wersję kernela np.: 5.5"
 read KERNEL
 
-echo "Wpisz nazwę pliku np.: README.md"
-read PLIK
+PLIK="README.md"
 
 CODE=('`')
 CODE2=('```')
