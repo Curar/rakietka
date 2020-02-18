@@ -26,11 +26,11 @@ function download {
 	then
 		if curl -L /dev/null --silent --head --fail "$ADRES_KERNELA";
 		then
-  			echo "URL exists: $ADRES_KERNELA"
+  			echo "Adres istnieje : $ADRES_KERNELA"
 			curl -L ${ADRES_KERNELA} > ${KERNEL_EXIST}
 			clear	
 		else
-  			echo "URL does not exist: $ADRES_KERNELA"
+  			echo "Adres nie istnieje : $ADRES_KERNELA"
 			exit
 		fi
 	else
