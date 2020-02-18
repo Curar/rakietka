@@ -24,8 +24,15 @@ ADRES_KERNELA="https://git.kernel.org/torvalds/t/linux-${KERNEL}.tar.gz"
 function download {
         if [ ! -e "$KERNEL_EXIST" ]
 	then
-	curl -L ${ADRES_KERNELA} > ${KERNEL_EXIST}
-	clear	
+		if curl -L /dev/null --silent --head --fail "$ADRES_KERNELA";
+		then
+  			echo "URL exists: $ADRES_KERNELA"
+			curl -L ${ADRES_KERNELA} > ${KERNEL_EXIST}
+			clear	
+		else
+  			echo "URL does not exist: $ADRES_KERNELA"
+			exit
+		fi
 	else
 	echo -e "\e[32m===========================\e[0m"
 	echo -e "\e[32m= Kernel jest już pobrany =\e[0m"
