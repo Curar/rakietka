@@ -35,6 +35,7 @@ function download {
 			clear
 		else
   			echo "Kernel nie istnieje : $ADRES_KERNELA"
+			exit
 		fi
 	else
 	echo -e "\e[32m===========================\e[0m"
