@@ -26,9 +26,16 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 function download {
         if [ ! -e "$KERNEL_EXIST" ] && [ ! -e "$KERNEL_SIGN" ]
 	then
-	curl --compressed --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
-	curl --compressed --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
-	clear	
+		if curl --output /dev/null --silent --head --fail "$ADRES_KERNELA"; 
+		then
+  			echo "Kernel istnieje : $ADRES_KERNELA"
+			echo "Pobieram :"
+			curl --compressed --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
+			curl --compressed --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
+			clear
+		else
+  			echo "Kernel nie istnieje : $ADRES_KERNELA"
+		fi
 	else
 	echo -e "\e[32m===========================\e[0m"
 	echo -e "\e[32m= Kernel jest już pobrany =\e[0m"
