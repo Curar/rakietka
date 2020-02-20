@@ -106,9 +106,6 @@ function kompilacja {
 	echo -e "\e[32m============================\e[0m"
 	sleep 5	
 	make -j ${RDZENIE}
-	sudo make modules_install
-	sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
-
 }
 
 echo "Ściągnąć pliki z kernel.org ? :"
@@ -124,19 +121,38 @@ done
 
 if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 	then
-
-	echo "Weryfikowanie podpisu"
-	kompilacja
-	echo "Czy masz Arch Linux ?"
-	select ARCH in ArchLinux WYJŚCIE
-	do
-	  case "$ARCH" in
-	  "ArchLinux") archlinux;;
-	  "WYJŚCIE") exit;;
-	  *) echo "Brak wyboru"
-	esac
-	break
-	done
+		echo "Weryfikowanie podpisu"
+		kompilacja
+		echo -e "\e[32m===========================================================\e[0m"
+		echo -e "\e[32m=  Wgrać kernela do katalogu /boot i zainstalować moduły  =\e[0m"
+		echo -e "\e[32m===========================================================\e[0m"
+		sleep 5	
+		select WYBOR in WGRAJ WYJŚCIE
+			do
+  			case "$WYBOR" in
+    			"WGRAJ") sudo make modules_install
+			sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-${KERNEL}
+			;;
+    			"WYJŚCIE") 
+				echo -e "\e[32m====================================\e[0m"
+				echo -e "\e[32m=  Zakończyłem kompilację kernela  =\e[0m"
+				echo -e "\e[32m====================================\e[0m"	
+				exit
+				;;
+    			*) echo "Brak wyboru"
+  			esac
+			break
+		done
+		echo "Czy masz Arch Linux ?"
+		select ARCH in ArchLinux WYJŚCIE
+			do
+	  		case "$ARCH" in
+	  		"ArchLinux") archlinux;;
+	  		"WYJŚCIE") echo "Wychodzę";;
+	  		*) echo "Brak wyboru"
+			esac
+			break
+		done
 		echo -e "\e[32m====================================\e[0m"
 		echo -e "\e[32m=  Zakończyłem kompilację kernela  =\e[0m"
 		echo -e "\e[32m====================================\e[0m"	
