@@ -1,7 +1,8 @@
 
 # Linux kernel configuration and automatic kernel compilation and download scripts
 ## Automatic kernel build script or use the instructions below :
-`sh kompilator-1.3.sh`
+## [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
+`sh kompilator-1.4.sh`
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
 `sudo pacman -S base-devel bc inetutils`
