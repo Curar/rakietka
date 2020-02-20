@@ -34,7 +34,7 @@ ${CODE}usermod -G wheel USERNAME${CODE}
 ### 4. Unpacking :
  ${CODE}tar xavf linux-${KERNEL}.tar.xz${CODE}
 ### 5. Copying the configuration :
- ${CODE}cp config-arch-default linux-${KERNLE}/.config${CODE}
+ ${CODE}cp config-arch-default linux-${KERNEL}/.config${CODE}
 ### Optionally, you can use :
  ${CODE}make localmodconfig${CODE}
 ### 6. Own settings :
