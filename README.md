@@ -20,7 +20,7 @@
 ### 4. Unpacking :
  `tar xavf linux-5.5.5.tar.xz`
 ### 5. Copying the configuration :
- `cp config-arch-default linux-/.config`
+ `cp config-arch-default linux-5.5.5/.config`
 ### Optionally, you can use :
  `make localmodconfig`
 ### 6. Own settings :
