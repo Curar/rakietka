@@ -15,7 +15,8 @@ cat << EOF > ${PLIK}
 
 # Linux kernel configuration and automatic kernel compilation and download scripts
 ## Automatic kernel build script or use the instructions below :
-${CODE}sh kompilator-1.3.sh${CODE}
+## [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
+${CODE}sh kompilator-1.4.sh${CODE}
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
 ${CODE}sudo pacman -S base-devel bc inetutils${CODE}
