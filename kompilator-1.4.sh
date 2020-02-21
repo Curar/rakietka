@@ -95,6 +95,10 @@ function kompilacja {
 		cd ..
 	else
 		cd linux-${KERNEL}
+		echo -e "\e[32m==========================================\e[0m"
+		echo -e "\e[32m=   Wgrywam starą konfigurację kernela   =\e[0m"
+		echo -e "\e[32m==========================================\e[0m"
+		sleep 5	
 		make oldconfig
 		cd ..
 	fi
@@ -108,18 +112,20 @@ function kompilacja {
 	make -j ${RDZENIE}
 }
 
-echo "Ściągnąć pliki z kernel.org ? :"
-select SCIAGAJ in kernel.org WYJŚCIE
-do
-  case "$SCIAGAJ" in
-    "kernel.org") download;;
-    "WYJŚCIE") exit ;;
-    *) echo "Brak wyboru"
-  esac
-break
-done
+	echo -e "\e[32m===============================\e[0m"
+	echo -e "\e[32m=  Pobrać pliki źródła jądra  =\e[0m"
+	echo -e "\e[32m===============================\e[0m"	
+	select POBIERAJ in POBRAĆ WYJŚCIE
+	do
+  		case "$POBIERAJ" in
+    		"POBRAĆ") download;;
+    		"WYJŚCIE") exit ;;
+    		*) echo "Brak wyboru"
+  		esac
+		break
+	done
 
-if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
+	if [ -e "$KERNEL_EXIST" ] && [ -e "$KERNEL_SIGN" ]
 	then
 		echo "Weryfikowanie podpisu"
 		kompilacja
