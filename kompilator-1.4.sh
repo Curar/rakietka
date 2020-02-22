@@ -28,8 +28,10 @@ function download {
 	then
 		if curl --output /dev/null --silent --head --fail "$ADRES_KERNELA"; 
 		then
-  			echo "Kernel istnieje : $ADRES_KERNELA"
-			echo "Pobieram :"
+			echo -e "\e[32m==================================================================================================\e[0m"
+			echo -e "\e[32m= Kernel istnieje : $ADRES_KERNELA , pobieram : =\e[0m"
+			echo -e "\e[32m==================================================================================================\e[0m"
+			sleep 3			
 			curl --compressed --progress-bar -o "$KERNEL_EXIST" "$ADRES_KERNELA"
 			curl --compressed --progress-bar -o "$KERNEL_SIGN" "$ADRES_PODPISU"
 			clear
