@@ -14,10 +14,10 @@ CODE2=('```')
 cat << EOF > ${PLIK}
 
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
-# The script downloads a clean kernel from kernel.org
-# Config is fast and secure veryfy by this script : [Download script](https://github.com/moby/moby/blob/master/contrib/check-config.sh)
-## Automatic kernel build script or use the instructions below :
-## [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
+## The script downloads a clean kernel from [Kernel](https://kernel.org)
+### Config is fast and secure veryfy by this script : [Download script](https://github.com/moby/moby/blob/master/contrib/check-config.sh)
+### Automatic kernel build script or use the instructions below :
+### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
 ${CODE}sh kompilator-1.4.sh${CODE}
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
