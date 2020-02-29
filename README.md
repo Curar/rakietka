@@ -4,6 +4,8 @@
 ### Config is fast and secure veryfy by this [script](https://github.com/moby/moby/blob/master/contrib/check-config.sh) for compatible with : [Docker](https://docs.docker.com) project.
 ### Automatic kernel build script or use the instructions below :
 ### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
+### You can download everything :
+`git clone https://github.com/Curar/rakietka.git`
 `sh kompilator-1.4.sh`
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
