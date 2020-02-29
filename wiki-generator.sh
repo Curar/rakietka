@@ -15,7 +15,7 @@ cat << EOF > ${PLIK}
 
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
-### Config is fast and secure veryfy by this [script](https://github.com/moby/moby/blob/master/contrib/check-config.sh)for compatible with : [Docker](https://docs.docker.com) project.
+### Config is fast and secure veryfy by this [script](https://github.com/moby/moby/blob/master/contrib/check-config.sh) for compatible with : [Docker](https://docs.docker.com) project.
 ### Automatic kernel build script or use the instructions below :
 ### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
 ${CODE}sh kompilator-1.4.sh${CODE}
