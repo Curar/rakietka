@@ -20,6 +20,7 @@ cat << EOF > ${PLIK}
 ### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
 ### You can download everything :
 ${CODE}git clone https://github.com/Curar/rakietka.git${CODE}
+### Start the script :
 ${CODE}sh kompilator-1.4.sh${CODE}
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
