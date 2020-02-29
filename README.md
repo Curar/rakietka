@@ -6,6 +6,7 @@
 ### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
 ### You can download everything :
 `git clone https://github.com/Curar/rakietka.git`
+### Start the script :
 `sh kompilator-1.4.sh`
 ## Arch Linux - building the kernel using the classical method :
 ### Required Packages :
