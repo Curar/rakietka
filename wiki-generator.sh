@@ -22,7 +22,10 @@ cat << EOF > ${PLIK}
 ${CODE}git clone https://github.com/Curar/rakietka.git${CODE}
 ### Start the script :
 ${CODE}sh kompilator-1.4.sh${CODE}
-## Arch Linux - building the kernel using the classical method :
+***
+### You can use my script or compile manually
+***
+### Arch Linux - building the kernel using the classical method :
 ### Required Packages :
 ${CODE}sudo pacman -S base-devel bc inetutils${CODE}
 ### optionally you can add :

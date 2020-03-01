@@ -8,7 +8,10 @@
 `git clone https://github.com/Curar/rakietka.git`
 ### Start the script :
 `sh kompilator-1.4.sh`
-## Arch Linux - building the kernel using the classical method :
+***
+### You can use my script or compile manually
+***
+### Arch Linux - building the kernel using the classical method :
 ### Required Packages :
 `sudo pacman -S base-devel bc inetutils`
 ### optionally you can add :
