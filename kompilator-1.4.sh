@@ -2,10 +2,16 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
- echo -e "\e[32m ___           _           _  __        ___         ___         _____         _  __          _		\e[0m"   
- echo -e "\e[32m| _ \  ___    /_\    ___  | |/ /  ___  |_ _|  ___  | __|  ___  |_   _|  ___  | |/ /  ___    /_\  	\e[0m" 
- echo -e "\e[32m|   / |___|  / _ \  |___| | ' <  |___|  | |  |___| | _|  |___|   | |   |___| | ' <  |___|  / _ \ 	\e[0m" 
- echo -e "\e[32m|_|_\       /_/ \_\       |_|\_\       |___|       |___|         |_|         |_|\_\       /_/ \_\	\e[0m" 
+echo -e "\e[32m  ██▀███   ▄▄▄       ██ ▄█▀ ██▓▓█████▄▄▄█████▓ ██ ▄█▀▄▄▄      \e[0m" 
+echo -e "\e[32m ▓██ ▒ ██▒▒████▄     ██▄█▒ ▓██▒▓█   ▀▓  ██▒ ▓▒ ██▄█▒▒████▄    \e[0m" 
+echo -e "\e[32m ▓██ ░▄█ ▒▒██  ▀█▄  ▓███▄░ ▒██▒▒███  ▒ ▓██░ ▒░▓███▄░▒██  ▀█▄  \e[0m" 
+echo -e "\e[32m ▒██▀▀█▄  ░██▄▄▄▄██ ▓██ █▄ ░██░▒▓█  ▄░ ▓██▓ ░ ▓██ █▄░██▄▄▄▄██ \e[0m" 
+echo -e "\e[32m ░██▓ ▒██▒ ▓█   ▓██▒▒██▒ █▄░██░░▒████▒ ▒██▒ ░ ▒██▒ █▄▓█   ▓██▒\e[0m" 
+echo -e "\e[32m ░ ▒▓ ░▒▓░ ▒▒   ▓▒█░▒ ▒▒ ▓▒░▓  ░░ ▒░ ░ ▒ ░░   ▒ ▒▒ ▓▒▒▒   ▓▒█░\e[0m" 
+echo -e "\e[32m   ░▒ ░ ▒░  ▒   ▒▒ ░░ ░▒ ▒░ ▒ ░ ░ ░  ░   ░    ░ ░▒ ▒░ ▒   ▒▒ ░\e[0m" 
+echo -e "\e[32m   ░░   ░   ░   ▒   ░ ░░ ░  ▒ ░   ░    ░      ░ ░░ ░  ░   ▒   \e[0m" 
+echo -e "\e[32m    ░           ░  ░░  ░    ░     ░  ░        ░  ░        ░  ░\e[0m" 
+echo ""                                                             
 echo ""
 echo -e "\e[31m=============================================================\e[0m"
 echo -e "\e[31m= UWAGA !!! Skrypt kompiluje kernele z gałęzi 5.x tylko !!! =\e[0m"
@@ -51,7 +57,6 @@ function download {
 
 function archlinux {
 	cat << EOF > linux-${KERNEL}.preset
-
 	ALL_config="/etc/mkinitcpio.conf"
 	ALL_kver="/boot/vmlinuz-linux-${KERNEL}"
 	PRESETS=('default' 'fallback')
