@@ -22,6 +22,7 @@ echo "Podaj wersję kernela którą mam skompilować np.: 5.5.1"
 read KERNEL
 
 RDZENIE=`getconf _NPROCESSORS_ONLN`
+#RDZENIE="4"
 SKERNEL_EXIST="config/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
@@ -32,12 +33,12 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 
 
 function cpu {
-	if [[ $RDZENIE < 4 ]]
+	if [ $RDZENIE -le 4 ]
 	then
-		echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątków, dostosuję skrypt automatycznie\e[0m"
+		echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątki, dostosuję skrypt automatycznie\e[0m"
 		sleep 3
 	else
-		echo -e	"\e[32mWykryłem ,że masz : $RDZENIE wątki, dostosuję skrypt automatycznie\e[0m"
+		echo -e	"\e[32mWykryłem ,że masz : $RDZENIE wątków, dostosuję skrypt automatycznie\e[0m"
         	sleep 3	
 	fi
 }
