@@ -21,7 +21,7 @@ cat << EOF > ${PLIK}
 ### You can download everything :
 ${CODE}git clone https://github.com/Curar/rakietka.git${CODE}
 ### Start the script :
-${CODE}sh kompilator-1.4.sh${CODE}
+${CODE}sh kompilator-1.5.sh${CODE}
 ***
 ### You can use my script or compile manually
 ***

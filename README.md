@@ -3,11 +3,11 @@
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
 ### Config is fast and secure veryfy by this [script](https://github.com/moby/moby/blob/master/contrib/check-config.sh) for compatible with : [Docker](https://docs.docker.com) project.
 ### Automatic kernel build script or use the instructions below :
-### [Download script](https://github.com/Curar/rakietka/releases/download/1.4/kompilator-1.4.sh)
+### [Download script](https://github.com/Curar/rakietka/releases/download/1.5/kompilator-1.5.sh)
 ### You can download everything :
 `git clone https://github.com/Curar/rakietka.git`
 ### Start the script :
-`sh kompilator-1.4.sh`
+`sh kompilator-1.5.sh`
 ***
 ### You can use my script or compile manually
 ***
