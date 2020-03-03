@@ -2,8 +2,6 @@
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
-RDZENIE=`getconf _NPROCESSORS_ONLN`
-
 echo -e "\e[32m  ██▀███   ▄▄▄       ██ ▄█▀ ██▓▓█████▄▄▄█████▓ ██ ▄█▀▄▄▄      \e[0m" 
 echo -e "\e[32m ▓██ ▒ ██▒▒████▄     ██▄█▒ ▓██▒▓█   ▀▓  ██▒ ▓▒ ██▄█▒▒████▄    \e[0m" 
 echo -e "\e[32m ▓██ ░▄█ ▒▒██  ▀█▄  ▓███▄░ ▒██▒▒███  ▒ ▓██░ ▒░▓███▄░▒██  ▀█▄  \e[0m" 
@@ -19,11 +17,11 @@ echo -e "\e[31m=============================================================\e[0
 echo -e "\e[31m= UWAGA !!! Skrypt kompiluje kernele z gałęzi 5.x tylko !!! =\e[0m"
 echo -e "\e[31m=============================================================\e[0m"
 echo "" 
-echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątków procesora dostosuję skrypt\e[0m" 
-
+echo ""
 echo "Podaj wersję kernela którą mam skompilować np.: 5.5.1"
 read KERNEL
 
+RDZENIE=`getconf _NPROCESSORS_ONLN`
 SKERNEL_EXIST="config/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
@@ -34,9 +32,14 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 
 
 function cpu {
-	RDZENIE=`getconf _NPROCESSORS_ONLN`
-	echo -e "\e[32mMasz : $RDZENIE wątków\e[0m" 
-        sleep 3	
+	if [[ $RDZENIE < 4 ]]
+	then
+		echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątków, dostosuję skrypt automatycznie\e[0m"
+		sleep 3
+	else
+		echo -e	"\e[32mWykryłem ,że masz : $RDZENIE wątki, dostosuję skrypt automatycznie\e[0m"
+        	sleep 3	
+	fi
 }
 
 function download {
@@ -87,7 +90,6 @@ function kompilacja {
 		echo -e "\e[32m=====================\e[0m"
 		echo -e "\e[32m=  Podpis poprawny  =\e[0m"
 		echo -e "\e[32m=====================\e[0m"	
-		cpu
 		sleep 5	
 	else
     		echo "Problem z podpisem : linux-${KERNEL}.tar.xz"
@@ -126,7 +128,8 @@ function kompilacja {
 	sleep 5	
 	make -j ${RDZENIE}
 }
-
+	cpu
+	echo ""
 	echo -e "\e[32m===============================\e[0m"
 	echo -e "\e[32m=  Pobrać pliki źródła jądra  =\e[0m"
 	echo -e "\e[32m===============================\e[0m"	
