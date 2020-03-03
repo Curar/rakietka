@@ -21,13 +21,10 @@ echo -e "\e[31m=============================================================\e[0
 echo "" 
 echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątków procesora dostosuję skrypt\e[0m" 
 
-echo "Podaj nową wersję kernela np.: 5.5.1"
+echo "Podaj wersję kernela którą mam skompilować np.: 5.5.1"
 read KERNEL
 
-echo "Podaj starą wersję kernela np. 5.5"
-read SKERNEL
-
-SKERNEL_EXIST="linux-${SKERNEL}/.config"
+SKERNEL_EXIST="config/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
 KERNEL_D="linux-${KERNEL}"
@@ -97,7 +94,7 @@ function kompilacja {
 		exit
 	fi	
 	[ ! -d $KERNEL_D ] && { tar xavf linux-${KERNEL}.tar.xz; }
-	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp linux-${SKERNEL}/.config linux-${KERNEL}/.config; }
+	[ -f $SKERNEL_EXIST ] && { echo "$SKERNEL_EXIST Konfig istnieje !!!"; cp ${SKERNEL_EXIST} linux-${KERNEL}/.config; }
         if [ ! -e "$SKERNEL_EXIST" ]
 	then
 		echo -e "\e[31m=======================================\e[0m"
