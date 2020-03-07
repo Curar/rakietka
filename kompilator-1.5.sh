@@ -22,14 +22,12 @@ echo "Podaj wersję kernela którą mam skompilować np.: 5.5.1"
 read KERNEL
 
 RDZENIE=`getconf _NPROCESSORS_ONLN`
-#RDZENIE="4"
 SKERNEL_EXIST="config/.config"
 KERNEL_EXIST="linux-${KERNEL}.tar.xz"
 KERNEL_SIGN="linux-${KERNEL}.tar.sign"
 KERNEL_D="linux-${KERNEL}"
 ADRES_KERNELA="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.xz"
 ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.sign"
-
 
 
 function cpu {
@@ -40,6 +38,12 @@ function cpu {
 	else
 		echo -e	"\e[32mWykryłem ,że masz : $RDZENIE wątków, dostosuję skrypt automatycznie\e[0m"
         	sleep 3	
+	fi
+	if grep -qi Arch /etc/issue 
+	then
+		echo -e "\e[32mWykryłem ,że masz Arch Linux\e[0m"
+	else
+		echo -e "\e[32mWykryłem ,że masz `cat /etc/issue`\e[0m"
 	fi
 }
 
