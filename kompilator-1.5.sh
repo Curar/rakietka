@@ -42,7 +42,7 @@ function cpu {
 	if grep -qi Arch /etc/issue 
 	then
 		echo -e "\e[32mWykryłem ,że masz Arch Linux\e[0m"
-		echo -e "\e[32mTo świetnie bo skrypt został napisany w 100% dla tej dystrybucji\e[0m"
+		echo -e "\e[32mTo świetnie bo skrypt został napisany w 100% dla tej Dystrybucji\e[0m"
 	elif grep -qi Debian /etc/issue
 	then
 		echo -e "\e[32mWykryłem ,że masz Debiana\e[0m"
@@ -56,6 +56,9 @@ function cpu {
 	elif grep -qi Gentoo /etc/issue
 	then
 		echo -e "\e[32mWykryłem ,że masz Gentoo\e[0m"
+		echo -e "\e[32mUwaga !!! Skrypt nie jest w pełni zoptymalizowany pod kątem Dystrybucji Gentoo\e[0m"
+		echo -e "\e[32mPrzeczytaj koniecznie: https://wiki.gentoo.org/wiki/Kernel/Configuration\e[0m"
+
 	else
 		echo -e "\e[32mWykryłem ,że masz `cat /etc/os-release`\e[0m"
 	fi
