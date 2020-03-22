@@ -23,15 +23,15 @@
  `gpg --locate-keys torvalds@kernel.org gregkh@kernel.org`
 ### 3. Verification of kernel sources :
 ### Download source and signature :
- `wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.10.tar.xz`
+ `wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.11.tar.xz`
 
- `wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.10.tar.sign`
+ `wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.5.11.tar.sign`
 ### Verify signature :
- `unxz -c linux-5.5.10.tar.xz | gpg --verify linux-5.5.10.tar.sign -`
+ `unxz -c linux-5.5.11.tar.xz | gpg --verify linux-5.5.11.tar.sign -`
 ### 4. Unpacking :
- `tar xavf linux-5.5.10.tar.xz`
+ `tar xavf linux-5.5.11.tar.xz`
 ### 5. Copying the configuration :
- `cp config-arch-default linux-5.5.10/.config`
+ `cp config-arch-default linux-5.5.11/.config`
 ### Optionally, you can use :
  `make localmodconfig`
 ### 6. Own settings :
@@ -41,29 +41,29 @@
 ### 8. Install the modules :
  `sudo make modules_install`
 ### 9. Copying the new kernel to the / boot folder :
- `sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-5.5.10`
+ `sudo cp -v arch/x86_64/boot/bzImage /boot/vmlinuz-linux-5.5.11`
 ### 10. Make initial RAM disk :
- `sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-5.5.10.preset`
-### 11. Edit files linux-5.5.10.preset
- `sudo vim /etc/mkinitcpio.d/linux-5.5.10.preset`
+ `sudo cp /etc/mkinitcpio.d/linux.preset /etc/mkinitcpio.d/linux-5.5.11.preset`
+### 11. Edit files linux-5.5.11.preset
+ `sudo vim /etc/mkinitcpio.d/linux-5.5.11.preset`
 
  ```
  ALL_config="/etc/mkinitcpio.conf"
 
- ALL_kver="/boot/vmlinuz-linux-5.5.10"
+ ALL_kver="/boot/vmlinuz-linux-5.5.11"
 
  PRESETS=('default' 'fallback')
 
- default_image="/boot/initramfs-linux-5.5.10.img"
+ default_image="/boot/initramfs-linux-5.5.11.img"
 
- fallback_image="/boot/initramfs-linux-5.5.10-fallback.img"
+ fallback_image="/boot/initramfs-linux-5.5.11-fallback.img"
 
  fallback_options="-S autodetect"
  ```
 
 **We issue the command :**
 
- `sudo mkinitcpio -p linux-5.5.10`
+ `sudo mkinitcpio -p linux-5.5.11`
 
 ### 12. Refresh the THICK configuration :
  `sudo grub-mkconfig -o /boot/grub/grub.cfg`
