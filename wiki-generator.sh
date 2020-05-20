@@ -12,7 +12,7 @@ CODE=('`')
 CODE2=('```')
 
 cat << EOF > ${PLIK}
-
+<img src="https://raw.githubusercontent.com/Curar/rakietka/master/img/screen_2020-05-20_22-17-04.png">
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
 ### Current kernel is : ${KERNEL}
@@ -33,7 +33,7 @@ ${CODE}sudo pacman -S base-devel bc inetutils${CODE}
 ${CODE}usermod -G wheel USERNAME${CODE}
 ### WARNING !!! we perform operations from 1 to 7 on a regular user :
 ### 1. Generating the default configa :
- ${CODE}zcat /proc/config.gz > config-arch-default${CODE}
+${CODE}zcat /proc/config.gz > config-arch-default${CODE}
 ### 2. Adding GPG keys :
  ${CODE}gpg --locate-keys torvalds@kernel.org gregkh@kernel.org${CODE}
 ### 3. Verification of kernel sources :
