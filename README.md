@@ -1,4 +1,4 @@
-
+<img src="https://raw.githubusercontent.com/Curar/rakietka/master/img/screen_2020-05-20_22-17-04.png">
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
 ### Current kernel is : 5.6.14
@@ -19,7 +19,7 @@
 `usermod -G wheel USERNAME`
 ### WARNING !!! we perform operations from 1 to 7 on a regular user :
 ### 1. Generating the default configa :
- `zcat /proc/config.gz > config-arch-default`
+`zcat /proc/config.gz > config-arch-default`
 ### 2. Adding GPG keys :
  `gpg --locate-keys torvalds@kernel.org gregkh@kernel.org`
 ### 3. Verification of kernel sources :
