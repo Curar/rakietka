@@ -1,4 +1,4 @@
-<img src="https://raw.githubusercontent.com/Curar/rakietka/master/img/screen_2020-05-20_22-17-04.png">
+
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
 ### Current kernel is : 5.6.14
