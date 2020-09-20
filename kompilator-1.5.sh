@@ -134,9 +134,9 @@ function kompilacja {
 		cd ..
 	else
 		cd linux-${KERNEL}
-		echo -e "\e[32m==================================================\e[0m"
-		echo -e "\e[32m=   Wgrywam konfigurację kernela R-A-K-E-T-K-A   =\e[0m"
-		echo -e "\e[32m==================================================\e[0m"
+		echo -e "\e[32m====================================================\e[0m"
+		echo -e "\e[32m=   Wgrywam konfigurację kernela R-A-I-K-E-T-K-A   =\e[0m"
+		echo -e "\e[32m====================================================\e[0m"
 		sleep 5	
 		make oldconfig
 		cd ..
