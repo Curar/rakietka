@@ -1,3 +1,4 @@
+#!/bin/bash
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 
