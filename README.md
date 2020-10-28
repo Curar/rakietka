@@ -1,5 +1,6 @@
 
 # Linux kernel 5.x configuration and automatic kernel compilation and download scripts.
+### ![GitHub Logo](/img/logo.png)
 ## The script downloads a clean kernel from [Kernel.org](https://kernel.org)
 ### Current kernel is : 5.9.1
 ### Config is fast and secure veryfy by this [script](https://github.com/moby/moby/blob/master/contrib/check-config.sh) for compatible with : [Docker](https://docs.docker.com) project and optimized for Z390 intel platform.
