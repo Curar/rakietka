@@ -1,4 +1,4 @@
-#!bin/bash
+#!/bin/bash
 # BY WOJTEK 2020
 # Automatyczna kompilacja kernela
 clear
@@ -31,7 +31,7 @@ ADRES_PODPISU="https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-${KERNEL}.tar.
 
 
 function cpu {
-	if [ $RDZENIE -le 4 ]
+	if [ "$RDZENIE -le 4" ]
 	then
 		echo -e "\e[32mWykryłem ,że masz : $RDZENIE wątki, dostosuję skrypt automatycznie\e[0m"
 		sleep 3
